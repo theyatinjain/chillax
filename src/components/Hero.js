@@ -34,7 +34,7 @@ function Hero() {
   }, []);
 
   return (
-    <div style={{ margin: "100px 0 50px" }}>
+    <div style={{ margin: "100px 0 0" }}>
       <Container>
         <Row>
           <Col lg={6}>
@@ -52,7 +52,7 @@ function Hero() {
                 <Card.Subtitle className="mb-2 text-muted">
                   Featured Movie
                 </Card.Subtitle>
-                <Card.Text>{truncate(movie?.overview, 200)}</Card.Text>
+                <Card.Text>{truncate(movie?.overview, 180)}</Card.Text>
               </Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>Rating : {movie.vote_average}</ListGroup.Item>
@@ -79,7 +79,7 @@ function Hero() {
                 <Card.Subtitle className="mb-2 text-muted">
                   Featured Meal
                 </Card.Subtitle>
-                <Card.Text>{truncate(meal.strInstructions, 200)}</Card.Text>
+                <Card.Text>{truncate(meal.strInstructions, 180)}</Card.Text>
               </Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>

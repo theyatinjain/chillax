@@ -5,7 +5,7 @@ import FoodCardsRow from '../FoodCardsRow';
 
 function RowWrapper({ title, url}) {
     return (
-        <div id={title}>
+        <div id={title} style={{ paddingTop : '80px' }}>
             <Container fluid>
                 <h1>{title}</h1>
                 {(title==="Movies" || title==="Series") && <MoviesCardsRow fetchUrl={url}/>}

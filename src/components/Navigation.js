@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import logo from '../../assets/logo.png';
+import logo from '../assets/logo.png';
 
 function Navigation() {
     return (
@@ -12,10 +12,10 @@ function Navigation() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="container justify-content-end">
-                        <Nav.Link className="h5" href="#movies">Movies</Nav.Link>
-                        <Nav.Link className="h5" href="#series">Series</Nav.Link>
-                        <Nav.Link className="h5" href="#cocktails">Cocktails</Nav.Link>
-                        <Nav.Link className="h5" href="#food">Food</Nav.Link>
+                        <Nav.Link className="h5" href="#Movies">Movies</Nav.Link>
+                        <Nav.Link className="h5" href="#Series">Series</Nav.Link>
+                        <Nav.Link className="h5" href="#Cocktails">Cocktails</Nav.Link>
+                        <Nav.Link className="h5" href="#Meals">Meals</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

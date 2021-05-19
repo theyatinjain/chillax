@@ -12,6 +12,10 @@ const cocktailDB = axios.create({
     baseURL:  'https://www.thecocktaildb.com/api/json/v1/1'
 })
 
-const instance = { tmdb, spoonac : spoonacular, cocktailDB}
+const mealDB = axios.create({
+    baseURL : 'https://www.themealdb.com/api/json/v1/1'
+})
+
+const instance = { tmdb, spoonac : spoonacular, cocktailDB, mealDB}
 
 export default instance;

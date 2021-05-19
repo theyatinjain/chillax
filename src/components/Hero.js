@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, ListGroup } from "react-bootstrap";
-import axios from "../../helpers/axios";
-import requests from "../../helpers/requests";
+import axios from "../helpers/axios";
+import requests from "../helpers/requests";
 
 function Hero() {
   const [movie, setMovie] = useState("");
-  const [recipe, setRecipe] = useState("");
+  const [meal, setMeal] = useState("");
 
   function getIndex() {
     let date = new Date();
@@ -18,14 +18,6 @@ function Hero() {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   }
 
-  async function getRecipe(id) {
-    const request = await axios.spoonac.get(
-      `/${id}/information?${requests.spKey}&includeNutrition=false`
-    );
-    // console.log(request.data);
-    setRecipe(request.data);
-  }
-
   useEffect(() => {
     async function fetchMovie() {
       const request = await axios.tmdb.get(requests.fetchDiscover);
@@ -33,16 +25,16 @@ function Hero() {
       setMovie(request.data.results[getIndex()]);
     }
     async function fetchRecipe() {
-      const request = await axios.spoonac.get(requests.fetchCustomRecipe);
-      // console.log(request.data.results[getIndex()%10]);
-      getRecipe(request.data?.results[getIndex() % 10].id);
+      const request = await axios.mealDB.get(`${requests.fetchIdMeal}52768`);
+      // console.log(request.data.meals[0]);
+      setMeal(request.data.meals[0]);
     }
     fetchMovie();
     fetchRecipe();
   }, []);
 
   return (
-    <div style={{ margin: "100px 0" }}>
+    <div style={{ margin: "100px 0 50px" }}>
       <Container>
         <Row>
           <Col lg={6}>
@@ -50,8 +42,9 @@ function Hero() {
               <Card.Img
                 src={
                   movie &&
-                  `https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`
+                  `https://image.tmdb.org/t/p/original/${movie?.poster_path}`
                 }
+                height="360px"
                 variant="top"
               />
               <Card.Body>
@@ -65,7 +58,7 @@ function Hero() {
                 <ListGroup.Item>Rating : {movie.vote_average}</ListGroup.Item>
                 <ListGroup.Item>Popularity : {movie.popularity}</ListGroup.Item>
                 <ListGroup.Item>
-                  Release Date: {movie.release_date}
+                  Release Year: {movie.release_date?.substring(0,4)}
                 </ListGroup.Item>
               </ListGroup>
               <Card.Body>
@@ -76,31 +69,31 @@ function Hero() {
           <Col>
             <Card>
               <Card.Img
-                src={recipe && `${recipe.image}`}
-                height="357px"
+                src={meal && `${meal.strMealThumb}`}
+                height="360px"
                 width="100%"
                 variant="top"
               />
               <Card.Body>
-                <Card.Title>{recipe.title}</Card.Title>
+                <Card.Title>{meal.strMeal}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                  Featured Recipe
+                  Featured Meal
                 </Card.Subtitle>
-                <Card.Text>{truncate(recipe.summary, 200)}</Card.Text>
+                <Card.Text>{truncate(meal.strInstructions, 200)}</Card.Text>
               </Card.Body>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  Spoonacular Score : {recipe.spoonacularScore}
+                  Origin : {meal.strArea}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Health Score : {recipe.healthScore}
+                  Category : {meal.strCategory}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Source Name : {recipe.sourceName}
+                  Tags : {meal.strTags}
                 </ListGroup.Item>
               </ListGroup>
               <Card.Body>
-                <a href={recipe.sourceUrl} rel="noreferrer" target="_blank" className="btn btn-danger">Blog</a>
+                <a href={`https://www.youtube.com/results?search_query=${meal.strMeal}`} rel="noreferrer" target="_blank" className="btn btn-danger">Youtube</a>
               </Card.Body>
             </Card>
           </Col>

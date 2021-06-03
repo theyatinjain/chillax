@@ -1,15 +1,15 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import MoviesCardsRow from '../MoviesCardsRow';
-import FoodCardsRow from '../FoodCardsRow';
+import MoviesCardsRow from '../CardsRow/MoviesCardsRow';
+import FoodCardsRow from '../CardsRow/FoodCardsRow';
 
-function RowWrapper({ title, url}) {
+function RowWrapper({ title, url, isMovie, isFood, id }) {
     return (
-        <div id={title} style={{ paddingTop : '80px' }}>
+        <div id={id} style={{ paddingTop: '80px' }}>
             <Container fluid>
                 <h1>{title}</h1>
-                {(title==="Movies" || title==="Series") && <MoviesCardsRow fetchUrl={url}/>}
-                {(title==="Cocktails" || title==="Meals") && <FoodCardsRow fetchUrl={url} type={title}/>}
+                {isMovie && <MoviesCardsRow fetchUrl={url} itemsNumber="5" />}
+                {isFood && <FoodCardsRow fetchUrl={url} type={title} itemsNumber="5" />}
             </Container>
         </div>
     )

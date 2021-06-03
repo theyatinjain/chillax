@@ -25,8 +25,8 @@ function Hero() {
       setMovie(request.data.results[getIndex()]);
     }
     async function fetchRecipe() {
-      const request = await axios.mealDB.get(`${requests.fetchIdMeal}52768`);
-      // console.log(request.data.meals[0]);
+      const request = await axios.mealDB.get(`${requests.fetchIdMeal}52769`);
+      console.log(request.data.meals);
       setMeal(request.data.meals[0]);
     }
     fetchMovie();
@@ -36,6 +36,7 @@ function Hero() {
   return (
     <div style={{ margin: "100px 0 0" }}>
       <Container>
+        <h1 className="text-center mb-4 display-3">Top Pick</h1>
         <Row>
           <Col lg={6}>
             <Card className="mb-5">
@@ -58,7 +59,7 @@ function Hero() {
                 <ListGroup.Item>Rating : {movie.vote_average}</ListGroup.Item>
                 <ListGroup.Item>Popularity : {movie.popularity}</ListGroup.Item>
                 <ListGroup.Item>
-                  Release Year: {movie.release_date?.substring(0,4)}
+                  Release Year: {movie.release_date?.substring(0, 4)}
                 </ListGroup.Item>
               </ListGroup>
               <Card.Body>

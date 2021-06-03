@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Card, CardDeck } from 'react-bootstrap';
-import axios from '../helpers/axios';
+import axios from '../../helpers/axios';
 
-function CardsRow({ title, fetchUrl, callBack }) {
+function CardsRow({ title, fetchUrl, callBack, itemsNumber }) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         async function fetchMovies() {
             const request = await axios.tmdb.get(fetchUrl);
             // console.log(request.data.results);
-            setMovies(request.data.results.slice(0,6));
+            setMovies(request.data.results.slice(0, 5));
         }
         fetchMovies()
     }, [fetchUrl]);

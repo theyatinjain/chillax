@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <Navigation />
       <Hero />
-      <RowWrapper title="Movies" url={requests.fetchTrending}/>
-      <RowWrapper title="Series" url={requests.fetchTopRatedSeries}/>
-      <RowWrapper title="Cocktails" url={requests.fetchNonAlcoholDrink}/>
-      <RowWrapper title="Meals" url={requests.fetchMeals}/>
+      <RowWrapper title="Featured Movies" url={requests.fetchTrending} isMovie id="movies" />
+      <RowWrapper title="Featured Series" url={requests.fetchTopRatedSeries} isMovie id="series" />
+      <RowWrapper title="Featured Cocktails" url={requests.fetchNonAlcoholDrink} isFood id="cocktails" />
+      <RowWrapper title="Featured Meals" url={requests.fetchMeals} isFood id="meals" />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import SeriesPage from '../pages/SeriesPage';
 import CocktailsPage from '../pages/CocktailsPage';
 import MealsPage from '../pages/MealsPage';
 import Layout from './Layout';
+import NotFoundPage from '../pages/NotFoundPage';
 
 function App() {
   return (
@@ -23,13 +24,13 @@ function App() {
           <MoviesPage />
         </Route>
         <Route path="/cocktails">
-          <MealsPage />
-        </Route>
-        <Route path="/meals">
           <CocktailsPage />
         </Route>
+        <Route path="/meals">
+          <MealsPage />
+        </Route>
         <Route path="*">
-          <Redirect to="/home" />
+          <NotFoundPage />
         </Route>
       </Switch>
     </Layout>

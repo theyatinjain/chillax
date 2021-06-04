@@ -35,7 +35,7 @@ function FoodCardsRow({ fetchUrl, type, itemsNumber }) {
                                 <Card.Title>{item?.strDrink || item.strMeal}</Card.Title>
                             </Card.Body>
                             <Card.Footer>
-                                <a href={`https://www.youtube.com/results?search_query=${item.strDrink || item.strMeal}`} rel="noreferrer" target="_blank" className="btn btn-danger">Youtube</a>
+                                <a href={`https://www.youtube.com/results?search_query=${item.strDrink || item.strMeal}+drink`} rel="noreferrer" target="_blank" className="btn btn-danger">Youtube</a>
                             </Card.Footer>
                         </Card>
                     ))}

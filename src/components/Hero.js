@@ -25,8 +25,8 @@ function Hero() {
       setMovie(request.data.results[getIndex()]);
     }
     async function fetchRecipe() {
-      const request = await axios.mealDB.get(`${requests.fetchIdMeal}52769`);
-      console.log(request.data.meals);
+      const request = await axios.mealDB.get(`${requests.fetchIdMeal}52772`);
+      // console.log(request.data.meals);
       setMeal(request.data.meals[0]);
     }
     fetchMovie();

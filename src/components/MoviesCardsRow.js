@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Card, CardDeck } from 'react-bootstrap';
-import axios from '../../helpers/axios';
+import axios from '../helpers/axios';
 
-function CardsRow({ title, fetchUrl, callBack, itemsNumber }) {
+function CardsRow({ fetchUrl, itemsNumber }) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         async function fetchMovies() {
             const request = await axios.tmdb.get(fetchUrl);
             // console.log(request.data.results);
-            setMovies(request.data.results.slice(0, 5));
+            setMovies(request.data.results.slice(2, +itemsNumber + 2));
         }
         fetchMovies()
-    }, [fetchUrl]);
+    }, [fetchUrl, itemsNumber]);
 
     return (
         <div className="CardsRow">
@@ -25,7 +25,7 @@ function CardsRow({ title, fetchUrl, callBack, itemsNumber }) {
                                 movie &&
                                 `https://image.tmdb.org/t/p/original/${movie?.poster_path}`
                             }
-                            height="360px"
+                            height="320px"
                             variant="top"
                         />
                         <Card.Body>

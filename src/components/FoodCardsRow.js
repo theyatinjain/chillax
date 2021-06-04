@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardDeck, Container } from 'react-bootstrap';
-import axios from '../../helpers/axios';
+import axios from '../helpers/axios';
 
 function FoodCardsRow({ fetchUrl, type, itemsNumber }) {
     const [food, setFood] = useState([]);
@@ -16,7 +16,7 @@ function FoodCardsRow({ fetchUrl, type, itemsNumber }) {
             // console.log(request.data.meals);
             setFood(request.data.meals.slice(0, itemsNumber));
         }
-        if (type === "Featured Cocktails") fetchDrinks();
+        if (type === "cocktails") fetchDrinks();
         else fetchMeals();
     }, [fetchUrl, type, itemsNumber]);
 

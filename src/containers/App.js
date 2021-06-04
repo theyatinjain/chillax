@@ -1,20 +1,38 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navigation from '../components/Navigation';
-import Hero from '../components/Hero';
-import RowWrapper from '../components/wrapper/RowWrapper';
-import requests from './../helpers/requests';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import LandingPage from '../pages/LandingPage';
+import MoviesPage from '../pages/MoviesPage';
+import SeriesPage from '../pages/SeriesPage';
+import CocktailsPage from '../pages/CocktailsPage';
+import MealsPage from '../pages/MealsPage';
+import Layout from './Layout';
 
 function App() {
   return (
-    <div className="App">
-      <Navigation />
-      <Hero />
-      <RowWrapper title="Featured Movies" url={requests.fetchTrending} isMovie id="movies" />
-      <RowWrapper title="Featured Series" url={requests.fetchTopRatedSeries} isMovie id="series" />
-      <RowWrapper title="Featured Cocktails" url={requests.fetchNonAlcoholDrink} isFood id="cocktails" />
-      <RowWrapper title="Featured Meals" url={requests.fetchMeals} isFood id="meals" />
-    </div>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/home" />
+        </Route>
+        <Route path="/home">
+          <LandingPage />
+        </Route>
+        <Route path="/series">
+          <SeriesPage />
+        </Route>
+        <Route path="/movies">
+          <MoviesPage />
+        </Route>
+        <Route path="/cocktails">
+          <MealsPage />
+        </Route>
+        <Route path="/meals">
+          <CocktailsPage />
+        </Route>
+        <Route path="*">
+          <Redirect to="/home" />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
